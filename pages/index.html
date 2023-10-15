@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>SMILE-PARKING</title>
+    <!-- Enlazar Bootstrap CSS -->
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <!-- Estilos personalizados para la página -->
+    <style>
+        body {
+            background: linear-gradient(to bottom, #eab506, #ffffff);
+        }
+        .container {
+            padding-top: 10px;
+            height: 100vh;
+            max-width: 500px;
+        }
+        .container {
+            text-align: center;
+        }
+        .image {
+            width: 100%;
+            height: 200px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Imágenes superiores cambiantes -->
+        <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../img/img1.jpg" alt="Imagen 1" class="image">
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/img2.jpg" alt="Imagen 2" class="image">
+                </div>
+            </div>
+        </div>
+        <!-- Imagen estática más abajo -->
+        <img src="../img/logo-completo.jpg" alt="Imagen Estática" class="image">
+        <!-- Botones centrados -->
+        <div class="mt-3">
+            <a href="#" class="btn btn-primary  btn-lg open-login">INICIAR SESIÓN</a>
+        </div>
+        <div class="mt-2">
+            <a href="#" class="btn btn-success btn-lg open-register">REGISTRARSE</a>
+        </div>
+    </div>
+
+    <!-- Ventana emergente de Iniciar Sesión -->
+    <div id="loginModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Iniciar Sesión</h5>
+                    <button type="button" class="close cursor-pointer" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="../img/perfil.png" style="max-width: 100px; max-height: 100px;" class="rounded-circle">
+                        <p class="mt-2"><i>¡Hola! Qué alegría verte por aquí.</i></p>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Usuario" name="usuarioLogin">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Contraseña" name="claveLogin">
+                        </div>
+                        
+                        <p class="text-right"><a href="#">Olvidaste tu clave</a></p>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Recordarme</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="loginButton">Iniciar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Ventana emergente de Registrarse -->
+    <div id="registerModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrarse</h5>
+                    <button type="button" class="close cursor-pointer" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <p>¡Únete y vive la experiencia</p>
+                    </div>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <input type="text" class="form-control" placeholder="Nombres" name="nombres">
+                            </div>
+                            <div class="form-group col">
+                                <input type="text" class="form-control" placeholder="Apellidos" name="apellidos">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Teléfono (9 dígitos)" name="telefono">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Correo" name="correo">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Usuario" name="usuarioRegistro">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Contraseña (8-12 caracteres)" name="claveRegistro">
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="acceptTerms">
+                            <label class="form-check-label" for="acceptTerms">Acepto términos y condiciones</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="registerButton">Registrarme</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlazar Bootstrap JS, jQuery y Popper, e incluir Font Awesome para el ícono de usuario -->
+    <script src="../bootstrap/jquery.min.js"></script>
+    <script src="../bootstrap/popper.min.js"></script>
+    <script src="../bootstrap/bootstrap.min.js"></script>
+    <script>
+        // Función para abrir la ventana emergente de Iniciar Sesión
+        $('.open-login').click(function() {
+            $('#loginModal').modal('show');
+        });
+    
+        // Función para abrir la ventana emergente de Registrarse
+        $('.open-register').click(function() {
+            $('#registerModal').modal('show');
+        });
+    
+        // Función para procesar el inicio de sesión
+        $('#loginButton').click(function() {
+            // Obtener los valores del formulario de inicio de sesión
+            var usuario = $('input[name="usuarioLogin"]').val();
+            var clave = $('input[name="claveLogin"]').val();
+    
+            // Comprobar si el usuario y la clave coinciden con los datos en LocalStorage
+            var userData = JSON.parse(localStorage.getItem('Usuarios'));
+            if (userData) {
+                var foundUser = userData.find(function (user) {
+                    return user.usuario === usuario && user.clave === clave;
+                });
+                if (foundUser) {
+                    alert('Inicio de sesión exitoso');
+                    localStorage.setItem('usuarioLogueado', usuario);
+                    $('#loginModal').modal('hide');
+                    window.location.href = 'principal.html'; // Cambia esto a la URL de tu página de redirección
+                } else {
+                    alert('Credenciales incorrectas. Inténtalo de nuevo.');
+                }
+            } else {
+                alert('No hay usuarios registrados. Regístrate primero.');
+            }
+    
+            // Vaciar el formulario de inicio de sesión
+            $('input[name="usuarioLogin"]').val('');
+            $('input[name="claveLogin"]').val('');
+        });
+    
+        // Función para procesar el registro
+        $('#registerButton').click(function() {
+            // Obtener los valores del formulario de registro
+            var usuario = $('input[name="usuarioRegistro"]').val();
+            var nombres = $('input[name="nombres"]').val();
+            var apellidos = $('input[name="apellidos"]').val();
+            var telefono = $('input[name="telefono"]').val();
+            var correo = $('input[name="correo"]').val();
+            var nuevaClave = $('input[name="claveRegistro"]').val();
+            var acceptTerms = $('#acceptTerms').prop('checked');
+    
+            // Validar que se acepten los términos y condiciones
+            if (!acceptTerms) {
+                alert('Debes aceptar los términos y condiciones para registrarte.');
+                return;
+            }
+    
+            // Comprobar si ya existe la clave "Usuarios" en LocalStorage
+            var userData = JSON.parse(localStorage.getItem('Usuarios')) || [];
+    
+            // Comprobar si el usuario ya existe en el arreglo
+            var foundUser = userData.find(function (user) {
+                return user.usuario === usuario;
+            });
+    
+            if (foundUser) {
+                alert('El usuario ya existe. Por favor, elige otro nombre de usuario.');
+            } else {
+                // Crear un nuevo objeto de usuario
+                var newUser = {
+                    usuario: usuario,
+                    nombres: nombres,
+                    apellidos: apellidos,
+                    telefono: telefono,
+                    correo: correo,
+                    clave: nuevaClave
+                };
+    
+                // Agregar el nuevo usuario al arreglo
+                userData.push(newUser);
+    
+                // Guardar el arreglo actualizado en LocalStorage
+                localStorage.setItem('Usuarios', JSON.stringify(userData));
+    
+                alert('Registro exitoso');
+                $('#registerModal').modal('hide');
+    
+                // Vaciar el formulario de registro
+                $('input[name="usuarioRegistro"]').val('');
+                $('input[name="nombres"]').val('');
+                $('input[name="apellidos"]').val('');
+                $('input[name="telefono"]').val('');
+                $('input[name="correo"]').val('');
+                $('input[name="claveRegistro"]').val('');
+                $('#acceptTerms').prop('checked', false);
+            }
+        });
+    
+        // Función para limpiar los formularios al cerrar las ventanas flotantes
+        $('#loginModal').on('hidden.bs.modal', function (e) {
+            $(this).find('input').val('');
+        });
+    
+        $('#registerModal').on('hidden.bs.modal', function (e) {
+            $(this).find('input').val('');
+            $('#acceptTerms').prop('checked', false);
+        });
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+</body>
+</html>
